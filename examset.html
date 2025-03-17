@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>3 Sets Layout</title>
+  <style>
+    body {
+      background-color: #161e31;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      margin: 0;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      color: white;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      margin-top: 20px;
+      background-color: rgba(41, 47, 77, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 90%;
+      height: 80%;
+    }
+
+    .set {
+      width: 30%;
+      height:290px;
+      background-color: rgba(41, 47, 77, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .set:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .set h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ecb180;
+    }
+
+    .set p {
+      font-size: 1.1rem;
+      color: #d1d1d1;
+      text-align: center;
+    }
+
+    .set button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #ecb180;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .set button:hover {
+      background-color: #d1a465;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('dark1.jpeg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(50%);
+      z-index: -1;
+    }
+
+    @media screen and (max-width: 800px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .set {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>ONLINE EXAMINATION</h1>
+  <h3>Exam is about 45 Multiple choice questions, carries a total of 45M </h3>
+
+  <div class="container">
+    <div class="set">
+      <h2>LEVEL 1</h2>
+      <p>(no negative marks)<br/>
+        total questions = 15<br/>
+        total marks = 15x1=15M<br/>
+        Most of the questions are almost easier in Level-1<br/>
+      </p>
+      <button onclick="window.location.href='instruction.html'">Start LEVEL 1</button>
+    </div>
+    <div class="set">
+      <h2>LEVEL 2</h2>
+      <p>(-0.5 for wrong answer).<br/>
+        total questions = 15<br/>
+        total marks = 15x1=15M<br/>
+        Most of the questions are Moderate in Level-2<br/>
+      </p>
+      <button onclick="window.location.href='instruction2.html'">Start LEVEL 2</button>
+    </div>
+    <div class="set">
+      <h2>LEVEL 3</h2>
+      <p>(-1 for wrong answer).<br/>
+        total questions = 15<br/>
+        total marks = 15x1=15M<br/>
+        Most of the questions are harder than previous levels.<br/>
+      </p>
+      <button onclick="window.location.href='instruction3.html'">Start LEVEL 3</button>
+    </div>
+  </div>
+
+  <div class="background"></div>
+
+</body>
+</html>

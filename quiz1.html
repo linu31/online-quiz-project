@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #161e31;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #ecb180;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            border: 2px solid white;
+            padding: 10px;
+        }
+
+        .sidebar {
+            width: 30%;
+            padding: 10px;
+            border-right: 2px solid white;
+        }
+
+        .question-boxes {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+
+        .question-box {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: red;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .question-box.selected {
+            background-color: green;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff3b3f;
+            margin-top: 10px;
+        }
+
+        .quiz-container {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            margin-right: 5px;
+            background-color: #ecb180;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 3px 10px rgba(236, 177, 128, 0.7);
+        }
+
+        @keyframes animateBlink {
+            0% {
+                background: #ff3b3f;
+            }
+
+            25% {
+                background: #161e31;
+            }
+        }
+
+        .loading-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+        }
+
+        .loading-container span {
+            position: absolute;
+            width: 32px;
+            height: 6px;
+            background: #2c4766;
+            border-radius: 8px;
+            transform-origin: 128px;
+            transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+            animation: animateBlink 3s linear infinite;
+            animation-delay: calc(var(--i) * (3s / 50));
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Java Programming Test</h2>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Questions</h3>
+            <div class="question-boxes" id="questionNav"></div>
+            <div class="timer" id="timer">Time left: 20:00</div>
+        </div>
+        <div class="quiz-container">
+            <form id="quiz-form">
+                <div id="questions"></div>
+                <div class="button-container">
+                    <button type="button" class="btn" onclick="prevQuestion()">Previous</button>
+                    <button type="button" class="btn" onclick="nextQuestion()">Next</button>
+                    <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="loading-container">
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+        <span style="--i:5;"></span>
+        <span style="--i:6;"></span>
+        <span style="--i:7;"></span>
+        <span style="--i:8;"></span>
+        <span style="--i:9;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:27;"></span>
+        <span style="--i:28;"></span>
+        <span style="--i:29;"></span>
+        <span style="--i:30;"></span>
+        <span style="--i:31;"></span>
+        <span style="--i:32;"></span>
+        <span style="--i:33;"></span>
+        <span style="--i:34;"></span>
+        <span style="--i:35;"></span>
+        <span style="--i:36;"></span>
+        <span style="--i:37;"></span>
+        <span style="--i:38;"></span>
+        <span style="--i:39;"></span>
+        <span style="--i:40;"></span>
+        <span style="--i:41;"></span>
+        <span style="--i:42;"></span>
+        <span style="--i:43;"></span>
+        <span style="--i:44;"></span>
+        <span style="--i:45;"></span>
+        <span style="--i:46;"></span>
+        <span style="--i:47;"></span>
+        <span style="--i:48;"></span>
+        <span style="--i:49;"></span>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "What is Java?", options: ["Programming Language", "Coffee", "Operating System", "Tool"], answer: "a" },
+            { q: "Which is the correct file extension for Java files?", options: [".java", ".cpp", ".py", ".html"], answer: "a" },
+            { q: "Which method is the entry point for any Java application?", options: ["start()", "init()", "main()", "execute()"], answer: "c" },
+            { q: "Which keyword is used to create a class in Java?", options: ["class", "create", "new", "function"], answer: "a" },
+            { q: "Which of the following is not a valid Java data type?", options: ["boolean", "int", "float", "decimal"], answer: "d" },
+            { q: "Which statement is used to stop a loop in Java?", options: ["stop", "end", "break", "exit"], answer: "c" },
+            { q: "What is the default value of an instance variable in Java?", options: ["null", "0", "false", "undefined"], answer: "b" },
+            { q: "Which method is used to find the length of a string in Java?", options: ["getLength()", "size()", "length()", "lengthOf()"], answer: "c" },
+            { q: "Which of these access modifiers is most restrictive?", options: ["private", "protected", "public", "default"], answer: "a" },
+            { q: "What is the size of the float data type in Java?", options: ["4 bytes", "8 bytes", "2 bytes", "16 bytes"], answer: "a" },
+            { q: "Which of the following is used to handle exceptions in Java?", options: ["try-catch", "try-finally", "try-throw", "catch-throw"], answer: "a" },
+            { q: "Which operator is used to compare two values in Java?", options: ["=", "==", "&&", "||"], answer: "b" },
+            { q: "What is the default value of a boolean variable in Java?", options: ["true", "false", "null", "undefined"], answer: "b" },
+            { q: "Which loop is used to iterate a block of code multiple times in Java?", options: ["for", "while", "do-while", "all of the above"], answer: "d" },
+            { q: "Which of these methods is used to start a thread in Java?", options: ["run()", "execute()", "start()", "init()"], answer: "c" }
+        ];
+        let currentQuestion = 0;
+        let selectedAnswers = {};
+        let timer = 1200; // 20:00 in seconds
+
+        function renderQuestions() {
+            const questionContainer = document.getElementById('questions');
+            const question = questions[currentQuestion];
+            questionContainer.innerHTML = 
+                `<div class="question">${currentQuestion + 1}. ${question.q}</div>
+                <div class="options">
+                    ${question.options.map((opt, i) => 
+                        `<label>
+                            <input type="radio" name="q${currentQuestion}" value="${String.fromCharCode(97 + i)}" 
+                            onchange="updateSelection(${currentQuestion}, '${String.fromCharCode(97 + i)}')">
+                            ${opt}
+                        </label>` 
+                    ).join('')}
+                </div>`;
+            updateQuestionBoxes();
+        }
+
+        function updateQuestionBoxes() {
+            document.getElementById('questionNav').innerHTML = questions.map((_, i) => 
+                `<div class="question-box ${selectedAnswers[i] ? 'selected' : ''}" onclick="jumpToQuestion(${i})">${i + 1}</div>`
+            ).join('');
+        }
+
+        function updateSelection(index, value) {
+            selectedAnswers[index] = value;
+            updateQuestionBoxes();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestions();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestions();
+            }
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestion = index;
+            renderQuestions();
+        }
+
+        function submitQuiz() {
+            let score = Object.keys(selectedAnswers).reduce((acc, key) => acc + (selectedAnswers[key] === questions[key].answer ? 1 : 0), 0);
+            alert(`You scored ${score} out of ${questions.length}`);
+            window.location.href = "examset.html";
+        }
+
+        function startTimer() {
+            setInterval(() => {
+                if (timer > 0) {
+                    timer--;
+                    document.getElementById('timer').textContent = `Time left: ${Math.floor(timer / 60)}:${timer % 60 < 10 ? '0' : ''}${timer % 60}`;
+                } else {
+                    alert("Time's up!");
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        startTimer();
+        renderQuestions();
+    </script>
+</body>
+
+</html>

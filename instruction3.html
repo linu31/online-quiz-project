@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS Programming Quiz</title>
+  <style>
+    body {
+      background-color: #161e31;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .quiz-container {
+      background-color: #292f4d;
+      border-radius: 15px;
+      padding: 20px 30px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      margin: 20px 0;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .instructions {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .instructions h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .instructions ul {
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 10px;
+    }
+
+    .consent {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .consent input {
+      margin-right: 10px;
+    }
+
+    button.submit-btn {
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      background-color: #ecb180;
+      transition: background-color 0.2s;
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    button.submit-btn:hover {
+      background-color: #d1a465;
+    }
+
+    button.submit-btn:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+
+    .status-boxes {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .status-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+    }
+
+    .unattempted {
+      background-color: red;
+    }
+
+    .attempting {
+      background-color: green;
+    }
+
+    .status-info {
+      font-size: 1rem;
+      color: #ecb180;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .status-info span {
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
+      .quiz-container {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>DS Programming Quiz</h1>
+
+  <div class="quiz-container">
+    <div class="instructions">
+      <h2>Important Instructions:</h2>
+      <ul>
+        <li>Do not open other tabs or windows during the exam.</li>
+        <li>Ensure you have a stable internet connection throughout the quiz.</li>
+        <li>You have 20 minutes to complete the exam. The timer will start once you click "Start Exam".</li>
+        <li>The quiz will automatically submit when the timer runs out.</li>
+        <li>Once the quiz is submitted, your score will be displayed.</li>
+        <li>Attempt all questions. There is only one correct answer per question.</li>
+        <li>No external help is allowed. Please rely only on your knowledge.</li>
+        <li>If you face any issues, do not refresh the page. Contact the administrator if necessary.</li>
+        <li>You cannot change your answers once submitted, so double-check before submitting.</li>
+        <li>Good luck! Stay calm and do your best!</li>
+      </ul>
+    </div>
+
+    <div class="consent">
+      <input type="checkbox" id="consentCheckbox" onclick="toggleButton()" />
+      <label for="consentCheckbox">I have read and agree to the instructions above.</label>
+    </div>
+
+    <div class="status-boxes">
+      <div class="status-box unattempted" id="unattemptedBox"></div>
+      <div class="status-box attempting" id="attemptingBox"></div>
+    </div>
+
+    <div class="status-info">
+      <p><span>Red box:</span> Indicates an unattempted question.</p>
+      <p><span>Green box:</span> Indicates an attempted question.</p>
+    </div>
+    
+    <div style="text-align: center;">
+      <button type="button" class="submit-btn" id="startBtn" onclick="startQuiz()" disabled>Start Exam</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleButton() {
+      document.getElementById("startBtn").disabled = !document.getElementById("consentCheckbox").checked;
+    }
+
+    function startQuiz() {
+      window.location.href = 'quiz3.html'; 
+    }
+  </script>
+</body>
+</html>

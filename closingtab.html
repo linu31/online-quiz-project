@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam Completed</title>
+  <style>
+    body {
+      background-color: #161e31;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .completion-container {
+      background-color: #292f4d;
+      border-radius: 15px;
+      padding: 30px 40px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    button.close-btn {
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      background-color: #ecb180;
+      transition: background-color 0.2s;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    button.close-btn:hover {
+      background-color: #d1a465;
+    }
+  </style>
+</head>
+<body>
+  <div class="completion-container">
+    <h1>Your Exam Was Successfully Completed!</h1>
+    <p>Thank you for participating in our Programming Quiz.</p>
+    <button class="close-btn" onclick="closeWindow()">Close the Window</button>
+  </div>
+
+  <script>
+    function closeWindow() {
+        window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
